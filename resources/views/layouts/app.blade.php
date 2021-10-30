@@ -16,8 +16,12 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <!-- Icons -->
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link herf="{{ asset('css/custom.css')}}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -77,7 +81,37 @@
 
         <main class="py-4">
             @yield('content')
+            <div class="container">
+                <div class="row text-right">
+                    <!-- Sidbar Widgets Column -->
+                    <div class="col-md-4">
+                        <!-- Categories Widgets -->
+                        <div class="card">
+                            <h5 class="care-header">التصنيفات</h5>
+                            <div class="card-body">
+                                <ul class="nav flex-column">
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Side Widgets -->
+                        <div class="card my-4 text-right">
+                            <h5 class="card-header">اخر التعليقات</h5>
+                            <ul class="list-group p-0">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
+
+        <footer class="bg-secondary text-center p-4">
+            <a href="http://academy.hsoub.com">
+                <img style="width:100px" src="https://images.unsplash.com/photo-1635539530442-214d39194ed4?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
+            </a>
+        </footer>
     </div>
 </body>
 </html>
