@@ -20,9 +20,13 @@ class CreatePostsTable extends Migration
             $table->string('slug')->unique();
             $table->text('body');
             $table->string('image_path');
-            $table->integer('user_id')->unsigned();
             $table->boolean('approved')->default(false);
-            $table->tinyInteger('category_id')->unsigned();
+            $table->unsignedBigInteger('user_id');
+            // $table->unsignedTinyInteger('category_id');
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+
         });
     }
 
