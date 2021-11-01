@@ -5,7 +5,11 @@
       <h5 class="care-header">التصنيفات</h5>
       <div class="card-body">
           <ul class="nav flex-column">
-
+            @foreach ($categories as $category)
+                <li class="nav-item">
+                    <a href="" class="nav-link">{{ $category->title }}</a>
+                </li>
+            @endforeach
           </ul>
       </div>
   </div>
