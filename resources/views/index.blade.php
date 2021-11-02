@@ -12,8 +12,8 @@
                     <a href="" class="btn btn-primary">المزيد</a>
                 </div>
                 <div class="card-footer text muted">
-                    {{ $post->created_at }}
-                    <a href="">{{ $post->user->name }}</a>
+                    {{ $post->created_at->diffForHumans() }}
+                   By <a href="">{{ $post->user->name }}</a>
                 </div>
             </div>
         @endforeach
