@@ -2,6 +2,9 @@
 @section('content')
 <div class="col-md-8">
     <h2 class="my-4">المنشورات </h2>
+
+    @includeWhen(!count($posts), 'alerts.empty', ['msg' => 'لاتوجد منشورات'])
+
         @foreach ($posts as $post)
             <div class="card mb-4">
                 <img src="{{ asset('storage/'.$post->image_path) }}" alt="" class="card-img-top">

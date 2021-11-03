@@ -22,6 +22,8 @@ Route::get('/', function () {
 //     return view('index');
 // });
 
-Route::resource('/', PostController::class);
+Route::get('/', [PostController::class, 'index']);
+
+Route::get('{id}/{slug}', [PostController::class, 'getByCategory'])->name('category');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -7,7 +7,7 @@
           <ul class="nav flex-column">
             @foreach ($categories as $category)
                 <li class="nav-item">
-                    <a href="" class="nav-link">{{ $category->title }}</a>
+                    <a href="/{{ $category->id }}/{{ $category->slug }}" class="nav-link">{{ $category->title }}</a>
                 </li>
             @endforeach
           </ul>
