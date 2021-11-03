@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <h3 class="card-title">{{ $post->title }}</h3>
                     <p class="card-text">{{ $post->body }}</p>
-                    <a href="" class="btn btn-primary">المزيد</a>
+                    <a href="{{ route('post.show', $post->id) }}" class="btn btn-primary">المزيد</a>
                 </div>
                 <div class="card-footer text muted">
                     {{ $post->created_at->diffForHumans() }}

@@ -53,7 +53,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = $this->post->find($id);
+
+        return view('post.show', compact('post'));
     }
 
     /**

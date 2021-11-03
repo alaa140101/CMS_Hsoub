@@ -43,4 +43,9 @@ class Post extends Model
     public function scopeApproved($query){
         return $query->whereApproved(true)->latest();
     }
+
+    public function getImagepathAttribute($img)
+    {
+        return asset('storage/'.$img);
+    }
 }

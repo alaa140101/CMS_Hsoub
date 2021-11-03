@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
 
 // Route::get('/index', function () {
 //     return view('index');
@@ -24,6 +24,8 @@ Route::get('/', function () {
 
 Route::get('/', [PostController::class, 'index']);
 
+Route::resource('post', PostController::class)->except(['index']);
+
 Route::get('{id}/{slug}', [PostController::class, 'getByCategory'])->name('category');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

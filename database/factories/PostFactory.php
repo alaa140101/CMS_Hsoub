@@ -15,9 +15,9 @@ class PostFactory extends Factory
     {
         return [
             'image_path' => 'uploads/'. $this->faker->image('public/storage/uploads', 600, 400, null, false),
-            'title' => $this->faker->text(50),
+            'title' => $this->faker->realText(50),
             'slug' => $this->faker->slug(),
-            'body' => $this->faker->realText(),
+            'body' => $this->faker->realText(200),
             'approved' => $this->faker->boolean(),
             'user_id' => rand(1, 10),
             'category_id' => rand(1, 5),

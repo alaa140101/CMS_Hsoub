@@ -1,5 +1,5 @@
 <!-- Sidbar Widgets Column -->
-<div class="col-md-4">
+<div class="col-md-4 mt-3">
   <!-- Categories Widgets -->
   <div class="card">
       <h5 class="care-header">التصنيفات</h5>
