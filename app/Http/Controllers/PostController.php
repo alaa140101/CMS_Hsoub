@@ -7,6 +7,12 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
+    public $post;
+    
+    public function __construct(Post $post)
+    {
+        $this->post = $post;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,7 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $posts = Post::latest()->get();
+        $posts = Post::with('user:id,name')->latest()->paginate(5);
         return view('index', compact('posts'));
     }
 

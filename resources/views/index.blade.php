@@ -1,8 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="col-md-8">
-    <h2 class="my-4">
-        المنشورات
+    <h2 class="my-4">المنشورات </h2>
         @foreach ($posts as $post)
             <div class="card mb-4">
                 <img src="{{ asset('storage/'.$post->image_path) }}" alt="" class="card-img-top">
@@ -17,7 +16,13 @@
                 </div>
             </div>
         @endforeach
-    </h2>
+
+        <!-- Pagination -->
+        {{-- <ul class="pagination justify-content-cneter mb-4">
+            {{ $posts->links() }}
+        </ul> --}}
+        <div class="col-md-8 mt-10">{{ $posts->links() }}</div>
+
 </div>
 @include('partials.sidebar')
 @endsection
