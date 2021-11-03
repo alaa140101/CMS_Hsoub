@@ -20,7 +20,7 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $posts = $this->post::with('user:id,name')->Approved()->paginate(5);
+        $posts = $this->post::with('user:id,name')->approved()->paginate(5);
         return view('index', compact('posts'));
     }
 
@@ -96,6 +96,12 @@ class PostController extends Controller
     {
         $posts = $this->post::with('user:id,name')->whereCategoryId($id)->approved()->paginate(10);
 
+        return view('index', compact('posts'));
+    }
+
+    public function search(Request $request)
+    {
+        $posts = $this->post->where('body', 'LIKE', '%'.$request->keyword.'%')->with('user:id,name')->approved()->paginate(5);
         return view('index', compact('posts'));
     }
 }

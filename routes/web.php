@@ -28,4 +28,5 @@ Route::resource('post', PostController::class)->except(['index']);
 
 Route::get('{id}/{slug}', [PostController::class, 'getByCategory'])->name('category');
 
+Route::post('/search', [PostController::class, 'search'])->name('search');
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
