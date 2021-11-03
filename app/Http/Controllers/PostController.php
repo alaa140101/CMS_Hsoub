@@ -20,7 +20,7 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $posts = Post::with('user:id,name')->latest()->paginate(5);
+        $posts = Post::with('user:id,name')->Approved()->paginate(5);
         return view('index', compact('posts'));
     }
 
