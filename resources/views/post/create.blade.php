@@ -15,6 +15,9 @@
       <div class="form-group">
         <textarea  name="body" placeholder="محتوى الموضوع" rows="3" class="form-control"></textarea>
       </div>
+      <div class="form-group">
+        <input type="file" name="image_path"  class="form-control">
+      </div>      
       <button type="submit" class="btn btn-primary">ارسل</button>
     </form>
   </div>    

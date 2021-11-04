@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Traits\ImageUploadTrait;
 
 class PostController extends Controller
 {
+    use ImageUploadTrait;
     public $post;
     
     public function __construct(Post $post)
@@ -42,7 +44,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $request->user()->posts()->create($request->all());
+        if($request->hasFile('image'))
+        {
+            $image_name = $this->uploadImage($request->image);
+        }
+        $request->user()->posts()->create($request->all() + ['image_path' => $image_name ?? 'default.jpg']);
 
         return back()->with('success', trans('alerts.success'));
     }
