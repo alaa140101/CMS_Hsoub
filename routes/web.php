@@ -22,6 +22,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('index');
 // });
 
+Auth::routes(['verify' => true]);
+
+
 Route::get('/', [PostController::class, 'index']);
 
 Route::resource('post', PostController::class)->except(['index']);

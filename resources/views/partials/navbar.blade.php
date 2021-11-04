@@ -45,11 +45,11 @@
         <!-- Authentication Links -->
         @guest
             <li class="nav-item mr-3">
-                <a class="nav-link" href="#">{{ __('auth.Login') }}</a>
+                <a class="nav-link" href="{{ route('login') }}">{{ __('auth.Login') }}</a>
             </li>
             @if (Route::has('register'))
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ __('auth.Register') }}</a>
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('auth.Register') }}</a>
                 </li>
             @endif
         @else

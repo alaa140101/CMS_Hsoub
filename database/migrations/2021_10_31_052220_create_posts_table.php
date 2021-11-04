@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('body');
-            $table->string('image_path');
+            $table->string('image_path')->default('default.png');
             $table->boolean('approved')->default(false);
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Helpers\Slug;
 
 class Post extends Model
 {
@@ -47,5 +48,11 @@ class Post extends Model
     public function getImagepathAttribute($img)
     {
         return asset('storage/'.$img);
+    }
+
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = $value;
+        $this->attributes['slug'] = Slug::uniqueSlug($value, 'posts');
     }
 }

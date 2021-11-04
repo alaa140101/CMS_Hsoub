@@ -31,7 +31,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+	    return view('post.create');
     }
 
     /**
@@ -42,7 +42,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->user()->posts()->create($request->all());
+
+        return back()->with('success', trans('alerts.success'));
     }
 
     /**
