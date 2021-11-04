@@ -48,7 +48,8 @@ class PostController extends Controller
         {
             $image_name = $this->uploadImage($request->image);
         }
-        $request->user()->posts()->create($request->all() + ['image_path' => $image_name ?? 'default.jpg']);
+        // dd($request->user());
+        $request->user()->posts()->create($request->all() + ['image_path' => 'uploads/'.$image_name ?? 'default.jpg']);
 
         return back()->with('success', trans('alerts.success'));
     }
