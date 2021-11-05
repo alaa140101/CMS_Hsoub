@@ -15,11 +15,11 @@ class PostFactory extends Factory
     {
         return [
             'image_path' => 'uploads/'. $this->faker->image('public/storage/uploads', 600, 400, null, false),
-            'title' => $this->faker->realText(50),
+            'title' => $this->faker->realText(20),
             'slug' => $this->faker->slug(),
             'body' => $this->faker->realText(200),
             'approved' => $this->faker->boolean(),
-            'user_id' => rand(1, 10),
+            'user_id' => $this->faker->numberBetween(1,5),
             'category_id' => rand(1, 5),
         ];
     }

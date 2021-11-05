@@ -75,7 +75,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = $this->post->find($id);
+
+        return view('post.edit', compact('post'));
     }
 
     /**
@@ -87,7 +89,14 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if($request->hasFile('image'))
+        {
+            $request->user()->posts()->find($id)->update($request->all() + ['image_path' => 'uploads/'.$this->uploadImage($request->image)]);
+        }
+
+        $request->user()->posts()->find($id)->update($request->all());
+
+        return back()->with('success', trans('alerts.success'));
     }
 
     /**
