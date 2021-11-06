@@ -17,8 +17,13 @@
   <!-- Side Widgets -->
   <div class="card my-4 text-right">
       <h5 class="card-header">اخر التعليقات</h5>
-      <ul class="list-group p-0">
-
+      <ul class="list-group p-2 flex-column">
+        @foreach ($recent_comments as $comment)
+            <li class="list-group p-2 flex-row">
+                <img src="{{ asset('storage/avatars/avatar2.jpg') }}" alt="" class="avatar ml-2">
+                <a href="{{ route('post.show', $comment->post->id)}}#comments">{{ Str::limit($comment->body, 30) }}</a>
+            </li>
+        @endforeach
       </ul>
   </div>
 </div>

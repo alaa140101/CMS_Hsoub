@@ -24,6 +24,11 @@
       </div>
     </div>
   </div>
+  <div class="word-break container mt-5" id="comments">
+    @foreach ($post->comments as $comment)
+      @include('comments.comments')
+    @endforeach
+  </div>
 </div>
 
 @include('partials.sidebar')

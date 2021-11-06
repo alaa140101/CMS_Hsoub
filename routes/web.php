@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,8 +31,10 @@ Route::get('/', [PostController::class, 'index']);
 
 Route::resource('post', PostController::class)->except(['index']);
 
-Route::get('{id}/{slug}', [PostController::class, 'getByCategory'])->name('category');
+Route::get('{id}/{slug}', [PostController::class, 'getByCategory'])->name('category')->where('id', '[0-9]+');
 
 Route::post('/search', [PostController::class, 'search'])->name('search');
 
-Route::resource('comment', CommentController::class)->except(['index']);;
+Route::resource('comment', CommentController::class);
+
+Route::get('user/{id}', [ProfileController::class, 'getByUser'])->name('profile');

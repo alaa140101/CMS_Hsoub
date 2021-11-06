@@ -4,27 +4,27 @@ namespace App\Http\ViewComposers;
 
 use App\Repositories\UserRepository;
 use Illuminate\View\View;
-use App\Models\Category;
+use App\Models\Comment;
 
-class CategoryComposer
+class CommentComposer
 {
      /**
      * The user repository implementation.
      *
-     * @var \App\Models\Category
+     * @var \App\Models\Comment
      */
-    protected $categories;
+    protected $comments;
 
     /**
      * Create a new profile composer.
      *
-     * @param  \App\Models\Category  $categories
+     * @param  \App\Models\Comment  $comments
      * @return void
      */
-    public function __construct(Category $categories)
+    public function __construct(Comment $comments)
     {
         // Dependencies are automatically resolved by the service container...
-        $this->categories = $categories;
+        $this->comments = $comments;
     }
 
     /**
@@ -35,6 +35,6 @@ class CategoryComposer
      */
     public function compose(View $view)
     {
-        return $view->with('categories', $this->categories->all());
+        return $view->with('recent_comments', $this->comments::with('post')->take(5)->latest()->get());
     }
 }
