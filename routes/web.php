@@ -38,3 +38,5 @@ Route::post('/search', [PostController::class, 'search'])->name('search');
 Route::resource('comment', CommentController::class);
 
 Route::get('user/{id}', [ProfileController::class, 'getByUser'])->name('profile');
+
+Route::get('user/{id}/comments', [ProfileController::class, 'getCommentsByUser']);

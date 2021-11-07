@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Category;
+use App\Models\Post;
 
 class CategorySeeder extends Seeder
 {
@@ -14,6 +15,8 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::factory()->count(5)->create();
+        Category::factory()->times(5)
+        ->has(Post::factory()->count(30))
+        ->create();
     }
 }

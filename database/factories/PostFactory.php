@@ -18,8 +18,7 @@ class PostFactory extends Factory
             'title' => $this->faker->realText(20),
             'slug' => $this->faker->slug(),
             'body' => $this->faker->realText(200),
-            'approved' => $this->faker->boolean(),
-            'user_id' => $this->faker->numberBetween(1,5),
+            'user_id' => $this->faker->numberBetween(1,10),
             'category_id' => rand(1, 5),
         ];
     }

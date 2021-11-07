@@ -18,13 +18,14 @@
     <div class="col-md-12">
       <ul class="nav nav-tabs mb-3">
         <li class="nav-item">
-          <a href="" class="nav-link">التعليقات</a>
+          <a href="{{$contents->profile->user_id}}/comments" class="nav-link">التعليقات</a>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link">المشاركات</a>
+          <a href="{{$contents->profile->user_id}}" class="nav-link">المنشورات</a>
         </li>
       </ul>
 
+      @if ($contents->relationLoaded('posts'))
       @includeWhen(!count($contents->posts), 'alerts.empty', ['msg' => 'لاتوجد منشورات'])
       <div class="row mb-2">
         @foreach ($contents->posts as $post)
@@ -45,6 +46,23 @@
             </div>
           </div>            
         @endforeach
+        
+        @else 
+
+        @includeWhen(!count($contents->comments), 'alerts.empty', ['msg' => 'لاتوجد تعليقات'])
+        @foreach ($contents->comments as $comment)
+            <div class="row bg-white mb-2 p-3">
+              <div class="col-lg-12 border-bottom p-2 text-wrap">
+                <a href="">
+                  <p class="card-text">{{ Str::limit($comment->body, 50) }}</p>
+                </a>
+              </div>
+              <div class="mt-2">
+                <h6><small></small></h6>
+              </div>
+            </div>
+        @endforeach
+        @endif 
       </div>
     </div>
   </div>

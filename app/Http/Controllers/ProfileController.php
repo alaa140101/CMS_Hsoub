@@ -16,7 +16,13 @@ class ProfileController extends Controller
 
     public function getByUser($id)
     {
-        $contents = $this->user->with('profile')->find($id);
+        $contents = $this->user->with('profile', 'posts')->find($id);
+        return view('user.profile', compact('contents'));
+    }
+
+    public function getCommentsByUser($id)
+    {
+        $contents = $this->user->with('profile', 'comments')->find($id);
         return view('user.profile', compact('contents'));
     }
 }
