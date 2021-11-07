@@ -17,7 +17,7 @@ class ProfileFactory extends Factory
             'avatar' => 'avatars/'. $this->faker->image('public/storage/avatars', 600, 400, null, false),
             'website' => $this->faker->url(),
             'bio' => $this->faker->realText(100),
-            'user_id' => $this->faker->numberBetween(1,5),
+            'user_id' => $this->faker->unique()->numberBetween(1,10),
         ];
     }
 }
