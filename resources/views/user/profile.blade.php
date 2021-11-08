@@ -18,51 +18,18 @@
     <div class="col-md-12">
       <ul class="nav nav-tabs mb-3">
         <li class="nav-item">
-          <a href="{{$contents->profile->user_id}}/comments" class="nav-link">التعليقات</a>
+          <a href="/user/{{$contents->id}}/comments" class="nav-link {{ $contents->relationLoaded('comments') ? 'active' : ''}}">التعليقات</a>
         </li>
         <li class="nav-item">
-          <a href="{{$contents->profile->user_id}}" class="nav-link">المنشورات</a>
+          <a href="{{ route('profile', $contents->id)}}" class="nav-link {{ $contents->relationLoaded('posts') ? 'active' : ''}}">المنشورات</a>
         </li>
       </ul>
 
-      @if ($contents->relationLoaded('posts'))
-      @includeWhen(!count($contents->posts), 'alerts.empty', ['msg' => 'لاتوجد منشورات'])
-      <div class="row mb-2">
-        @foreach ($contents->posts as $post)
-          <div class="col-lg-3 col-md-4 mb-3">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">{{ $post->title }}</h5>
-              </div>
-            </div>
-            <div class="dropdown">
-              <a href="{{ route('post.show', $post->id) }}" class="dropdown-toggle link">
-                <span>المزيد</span>
-              </a>
-              <div class="dropdown-menu">
-                <a href="" class="dropdown-item">تعديل</a>
-                <a href="" class="dropdown-item">حذف</a>
-              </div>
-            </div>
-          </div>            
-        @endforeach
-        
-        @else 
-
-        @includeWhen(!count($contents->comments), 'alerts.empty', ['msg' => 'لاتوجد تعليقات'])
-        @foreach ($contents->comments as $comment)
-            <div class="row bg-white mb-2 p-3">
-              <div class="col-lg-12 border-bottom p-2 text-wrap">
-                <a href="">
-                  <p class="card-text">{{ Str::limit($comment->body, 50) }}</p>
-                </a>
-              </div>
-              <div class="mt-2">
-                <h6><small></small></h6>
-              </div>
-            </div>
-        @endforeach
-        @endif 
+      @if ($contents->relationLoaded('posts'))      
+        @include('user.posts_section')
+      @else 
+        @include('user.comments_section')
+      @endif 
       </div>
     </div>
   </div>

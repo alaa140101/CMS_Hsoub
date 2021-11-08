@@ -22,7 +22,7 @@ class ProfileController extends Controller
 
     public function getCommentsByUser($id)
     {
-        $contents = $this->user->with('profile', 'comments')->find($id);
+        $contents = $this->user->with('profile', 'comments.post')->find($id);
         return view('user.profile', compact('contents'));
     }
 }
