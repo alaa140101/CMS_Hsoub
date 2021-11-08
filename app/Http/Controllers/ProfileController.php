@@ -32,4 +32,12 @@ class ProfileController extends Controller
 
         return view('user.settings', compact('user'));
     }
+
+    public function updateProfile(Request $request)
+    {
+        auth()->user()->update($request->only(['name', 'email']));
+        auth()->user()->profile()->updateOrCreate(['user_id'=>\Auth::id()], $request->only(['website', 'bio']));
+
+        return back()->with('success', trans('alerts.success'));
+    }
 }

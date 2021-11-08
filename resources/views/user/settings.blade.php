@@ -3,10 +3,10 @@
 @section('content')
 <div class="container">
   <h4>تعديل البيانات الشخصية</h4>
-  <form action="" method="post">
+  <form action="{{route('settings')}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="col-lg-4 text-center">
-      <img src="{{ $user->profile->avatar }}" alt="avatar" class="profile mb-2" style="height: 100px;width:100px;">
+      <img src="{{ $user->profile->avatar ?? 'avatars/'.asset('storage/avatars/avatar.jpg') }}" alt="avatar" class="profile mb-2" style="height: 100px;width:100px;">
       <input type="file" name="avatar_file" id="avatar_file" class="d-none">
     </div>
     <div class="col-lg-8">
