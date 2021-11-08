@@ -64,7 +64,7 @@
                         <a class="dropdown-item" href="#"><i class="fas fa-cog fa-fw"></i>لوحة التحكم</a>
                     @endadmin
                     <a class="dropdown-item" href="#"><i class="far fa-user fa-fw"></i>{{__('titles.Profile')}}</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-cog fa-fw"></i>{{__('titles.Settings')}}</a>
+                    <a class="dropdown-item" href="{{ route('settings') }}"><i class="fas fa-cog fa-fw"></i>{{__('titles.Settings')}}</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();

@@ -40,3 +40,5 @@ Route::resource('comment', CommentController::class);
 Route::get('user/{id}', [ProfileController::class, 'getByUser'])->name('profile');
 
 Route::get('user/{id}/comments', [ProfileController::class, 'getCommentsByUser']);
+
+Route::get('settings', [ProfileController::class, 'settings'])->name('settings');

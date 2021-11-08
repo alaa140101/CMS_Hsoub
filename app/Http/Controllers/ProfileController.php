@@ -25,4 +25,11 @@ class ProfileController extends Controller
         $contents = $this->user->with('profile', 'comments.post')->find($id);
         return view('user.profile', compact('contents'));
     }
+
+    public function settings()
+    {
+        $user = $this->user->with('profile')->find(auth()->id());
+
+        return view('user.settings', compact('user'));
+    }
 }

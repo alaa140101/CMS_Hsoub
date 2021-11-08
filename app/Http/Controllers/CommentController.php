@@ -43,6 +43,7 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         $request->user()->comments()->create($request->all());
+        // $request->user()->with('comments')->create($request->all());
         return back();
     }
 
