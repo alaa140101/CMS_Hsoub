@@ -5,8 +5,9 @@
   <h4>تعديل البيانات الشخصية</h4>
   <form action="{{route('settings')}}" method="post" enctype="multipart/form-data">
     @csrf
-    <div class="col-lg-4 text-center">
-      <img src="{{ $user->profile->avatar ?? 'avatars/'.asset('storage/avatars/avatar.jpg') }}" alt="avatar" class="profile mb-2" style="height: 100px;width:100px;">
+    <div class="row bg-white p-5">
+    <div class="col-lg-4 text-center mb-5">
+      <img id="avatar_img" src="{{ $user->profile->avatar ?? asset('storage/avatars/avatar.jpg') }}" alt="avatar" class="rounded-circle">
       <input type="file" name="avatar_file" id="avatar_file" class="d-none">
     </div>
     <div class="col-lg-8">
@@ -41,6 +42,26 @@
         </div>
       </div>
     </div>
+  </div>
   </form>
   </div>
+@endsection
+
+@section('script')
+<script>
+  $('#avatar_img').click(function(){
+    $("input[id='avatar_file']").click();
+  });
+
+  $("#avatar_file").change(function(){
+    var reader = new FileReader();
+    reader.onload = function(){
+      $("#avatar_img").addClass("avatar_preview").attr("src", reader.result);
+    }
+
+    reader.readAsDataURL(event.target.files[0]);
+  });
+
+
+</script>    
 @endsection

@@ -55,7 +55,7 @@
         @else
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="#" alt="Avatar" class="avatar">
+                    <img src="{{ auth()->user()->profile->avatar }}" alt="Avatar" class="avatar">
                       <span class="caret"></span>
                 </a>
 

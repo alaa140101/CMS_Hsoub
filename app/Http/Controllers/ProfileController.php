@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Traits\ImageUploadTrait;
 
 class ProfileController extends Controller
 {
+    use ImageUploadTrait;
     public $user;
 
     public function __construct(User $user)
@@ -35,8 +37,14 @@ class ProfileController extends Controller
 
     public function updateProfile(Request $request)
     {
+        if($request->hasFile('avatar_file'))
+        {
+            $avatar = $this->uploadAvatar($request->avatar_file);
+            $request->merge(['avatar' => 'avatars/'.$avatar]);
+        }
+
         auth()->user()->update($request->only(['name', 'email']));
-        auth()->user()->profile()->updateOrCreate(['user_id'=>\Auth::id()], $request->only(['website', 'bio']));
+        auth()->user()->profile()->updateOrCreate(['user_id'=>\Auth::id()], $request->only(['website', 'bio', 'avatar']));
 
         return back()->with('success', trans('alerts.success'));
     }
