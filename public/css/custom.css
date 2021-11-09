@@ -1,4 +1,4 @@
-body {
+body{
     font-family: myFont;
     direction: rtl;
 }
@@ -8,9 +8,9 @@ body {
     src: url('JF-Flat-regular.ttf');
 }
 
-.content {
-    line-height: 3;
-    word-break: break-all;
+.content{
+    line-height:3;
+    word-break: break-all ;
 }
 
 .avatar {
@@ -18,24 +18,26 @@ body {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-}
+  }
 
-.avatar_preview {
+  .avatar_preview {
     width: 240px;
     height: 240px;
-}
+  }
 
-.profile {
+  .profile {
     vertical-align: middle;
     width: 150px;
     height: 150px;
     border-radius: 50%;
-}
+  }
 
-.word-break {
-    word-break: break-all;
-}
+  .word-break{
+    word-break: break-all ;
+  }
 
-footer {
-    margin-top: 200px;
-}
+  footer{
+      margin-top:200px;
+  }
+
+  
