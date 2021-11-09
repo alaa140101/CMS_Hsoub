@@ -12,9 +12,9 @@
               <div class="card-body-icon">
               <i class="fas fa-fw fa-th-list"></i>
               </div>
-              <div class="mr-5">المنشورات  </div>
+              <div class="mr-5">المنشورات {{ $post_count }} </div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="{{ route('posts.index') }}">
               <span class="float-left">المزيد</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -28,7 +28,7 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-list"></i>
               </div>
-              <div class="mr-5">التصنيفات </div>
+              <div class="mr-5">التصنيفات {{$categories_count}}</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">المزيد</span>
@@ -44,7 +44,7 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-users"></i>
               </div>
-              <div class="mr-5">الأعضاء </div>
+              <div class="mr-5">الأعضاء  {{$users_count}}</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">المزيد</span>
@@ -60,7 +60,7 @@
               <div class="card-body-icon">
               <i class="fa fa-fw fa-comments"></i>
               </div>
-              <div class="mr-5"> التعليقات </div>
+              <div class="mr-5"> التعليقات {{$comments_count}}</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">المزيد</span>

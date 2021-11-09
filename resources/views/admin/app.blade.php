@@ -56,7 +56,9 @@
                         </a>
                         <ul class="sidenav-second-level collapse" id="collapsePosts">
                             <li>
-                                <a href="#">جميع المنشورات</a>
+                                <a href="{{ route('posts.index') }}">
+                                    جميع المنشورات
+                                </a>
                             </li>
                             <li>
                                 <a href="#">إضافة منشور</a>

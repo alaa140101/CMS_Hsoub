@@ -61,7 +61,7 @@
 
                 <div class="dropdown-menu dropdown-menu-right  text-right" aria-labelledby="navbarDropdown">
                     @admin
-                        <a class="dropdown-item" href="#"><i class="fas fa-cog fa-fw"></i>لوحة التحكم</a>
+                        <a class="dropdown-item" href="{{route('user.settings')}}"><i class="fas fa-cog fa-fw"></i>لوحة التحكم</a>
                     @endadmin
                     <a class="dropdown-item" href="#"><i class="far fa-user fa-fw"></i>{{__('titles.Profile')}}</a>
                     <a class="dropdown-item" href="{{ route('settings') }}"><i class="fas fa-cog fa-fw"></i>{{__('titles.Settings')}}</a>

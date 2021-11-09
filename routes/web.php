@@ -3,6 +3,8 @@
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\AdminPostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,7 +47,11 @@ Route::get('settings', [ProfileController::class, 'settings'])->name('settings')
 
 Route::post('settings', [ProfileController::class, 'updateProfile'])->name('settings');
 
-Route::get('/admin/index', function () {
-    return view('admin.index');
-});
+// Route::get('/admin/index', function () {
+//     return view('admin.index');
+// });
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
+
+Route::resource('admin/posts', AdminPostController::class);
 
