@@ -44,3 +44,8 @@ Route::get('user/{id}/comments', [ProfileController::class, 'getCommentsByUser']
 Route::get('settings', [ProfileController::class, 'settings'])->name('settings');
 
 Route::post('settings', [ProfileController::class, 'updateProfile'])->name('settings');
+
+Route::get('/admin/index', function () {
+    return view('admin.index');
+});
+
