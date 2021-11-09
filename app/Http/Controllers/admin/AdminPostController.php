@@ -37,4 +37,19 @@ class AdminPostController extends Controller
 
         return back()->with('success', trans('alerts.success'));
     }
+
+    public function destroy(Post $post)
+    {
+        if($post->id == null){
+            abort(404);
+        }
+
+        $this->authorize('delete', $post);
+
+        $post->delete();
+
+        // Storage::delete("public/".$post->image_path);
+
+        return redirect(auth()->user()->username);
+    }
 }

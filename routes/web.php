@@ -5,6 +5,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\AdminPostController;
+use App\Http\Controllers\admin\AdminPermissionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,5 +54,13 @@ Route::post('settings', [ProfileController::class, 'updateProfile'])->name('sett
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
-Route::resource('admin/posts', AdminPostController::class);
+// Route::resource('admin/posts', AdminPostController::class);
+
+// Route::resource('admin/permissions', AdminPermissionController::class);
+
+Route::prefix('admin')->group( function () {
+  Route::resource('posts', AdminPostController::class);
+  Route::get('permissions', [AdminPermissionController::class, 'index'])->name('permissions');
+});
+
 

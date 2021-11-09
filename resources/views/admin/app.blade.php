@@ -72,7 +72,7 @@
                         </a>
                         <ul class="sidenav-second-level collapse" id="collapseRoles">
                             <li>
-                                <a href="#">الأدوار</a>
+                                <a href="{{ route('permissions.index')}}">الأدوار</a>
                             </li>
                             <li>
                                 <a href="#">إضافة دور</a>
