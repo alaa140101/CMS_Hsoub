@@ -18,18 +18,22 @@
             </select>
           </div>
         </div>
-        <div class="card-body row">
+        <div class="row p-3">
           @foreach ($permissions as $permission)
-              <div class="col-lg-4">
-                <label for="permission">
-                  <input type="checkbox" name="permission[]" id="" value="{{ $permission->id }}">
-                  {{ $permission->desc}}
-                </label>
-              </div>
+          <div class="form-check col-4 p-3">
+            <div class="ml-15">
+              <input class="form-check-input" type="checkbox" name="permission[]" id="" value="{{ $permission->id }}" id="permission">
+            </div>
+            <label class="form-check-label" for="permission">
+              {{ $permission->desc}}
+            </label>
+          </div>
           @endforeach
-        </div>
+        </div>       
         <div class="card-footer small text-muted">
-
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">تحديث</button>
+          </div>
         </div>
       </form>
     </div>

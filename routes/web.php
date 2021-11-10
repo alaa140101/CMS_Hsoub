@@ -65,7 +65,7 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::prefix('admin')->group( function () {
   Route::resource('posts', AdminPostController::class);
   Route::get('permissions', [AdminPermissionController::class, 'index'])->name('permissions.index');
-  Route::post('permissions', [AdminRoleController::class, 'story'])->name('permissions');
+  Route::post('permissions', [AdminRoleController::class, 'store'])->name('permissions');
 });
 
 

@@ -17,6 +17,8 @@ class AdminRoleController extends Controller
 
     public function store(Request $request)
     {
-        return $request->all();
+       $this->role->find($request->role_id)->permissions()->sync($request->permission);
+
+       return back();
     }
 }

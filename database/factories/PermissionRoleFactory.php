@@ -14,7 +14,8 @@ class PermissionRoleFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'role_id' => $this->faker->numberBetween(1,4),
+            'permission_id' => $this->faker->numberBetween(1,5)
         ];
     }
 }
