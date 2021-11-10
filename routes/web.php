@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\AdminPostController;
 use App\Http\Controllers\admin\AdminPermissionController;
+use App\Http\Controllers\admin\AdminRoleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,13 +55,17 @@ Route::post('settings', [ProfileController::class, 'updateProfile'])->name('sett
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
+// Route::get('/dashboard', ['as'=>'dashboard','uses'=> [DashboardController::class, 'index']])->middleware('Admin');
+
+
 // Route::resource('admin/posts', AdminPostController::class);
 
 // Route::resource('admin/permissions', AdminPermissionController::class);
 
 Route::prefix('admin')->group( function () {
   Route::resource('posts', AdminPostController::class);
-  Route::get('permissions', [AdminPermissionController::class, 'index'])->name('permissions');
+  Route::get('permissions', [AdminPermissionController::class, 'index'])->name('permissions.index');
+  Route::post('permissions', [AdminRoleController::class, 'story'])->name('permissions');
 });
 
 

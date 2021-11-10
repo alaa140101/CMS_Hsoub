@@ -17,7 +17,8 @@ class AdminPermissionController extends Controller
     public function index()
     {
         $permissions = $this->permission->all();
-        
         return view('admin.permissions.index', compact('permissions'));
     }
+
+   
 }
