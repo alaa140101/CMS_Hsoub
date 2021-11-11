@@ -4,9 +4,17 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Page;
 
 class AdminPageController extends Controller
 {
+    public $page;
+
+    public function __construct(Page $page)
+    {
+        $this->page = $page;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +32,7 @@ class AdminPageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.create');
     }
 
     /**
@@ -35,7 +43,9 @@ class AdminPageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->page->create($request->all());
+
+        return back()->with('success', trans('alerts.success'));
     }
 
     /**

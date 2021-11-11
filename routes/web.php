@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\AdminPostController;
 use App\Http\Controllers\admin\AdminPermissionController;
 use App\Http\Controllers\admin\AdminRoleController;
+use App\Http\Controllers\admin\AdminPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,6 +71,6 @@ Route::prefix('admin')->group( function () {
 
 Route::post('permission/byRole', [AdminRoleController::class, 'getByRole'])->name('permission_byRole');
 
-Route::resouce('pages', AdminPageController::class)->name('page');
+Route::resource('pages', AdminPageController::class);
 
 

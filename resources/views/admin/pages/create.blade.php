@@ -13,7 +13,7 @@
       </div>
       <div class="card-body">
         <div class="container">
-          <form action="{{ route('page.store') }}" method="post" enctype="multipart/form-data">
+          <form action="{{ route('pages.store') }}" method="post" enctype="multipart/form-data">
           @csrf
             <div class="col-lg-5 form-group">
               <label for="slug">عنوان الصفحة</label>
@@ -21,7 +21,7 @@
             </div>
             <div class="col-lg-5 form-group">
               <label for="title">الوصف</label>
-              <input type="text" name="slug" id="" class="form-control" placeholder="مثال: نبذة عنا">
+              <input type="text" name="title" id="" class="form-control" placeholder="مثال: نبذة عنا">
             </div>
             <div class="col-lg-12 form-group">
               <label for="body">المحتوى</label>
