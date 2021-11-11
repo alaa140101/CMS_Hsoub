@@ -21,4 +21,11 @@ class AdminRoleController extends Controller
 
        return back();
     }
+
+    public function getByRole(Request $data)
+    {
+        $permissions = $this->role->find($data->id)->permissions()->pluck('permission_id');
+
+        return $permissions;
+    }
 }

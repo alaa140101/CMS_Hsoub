@@ -20,12 +20,10 @@
         </div>
         <div class="row p-3">
           @foreach ($permissions as $permission)
-          <div class="form-check col-4 p-3">
-            <div class="ml-15">
-              <input class="form-check-input" type="checkbox" name="permission[]" id="" value="{{ $permission->id }}" id="permission">
-            </div>
+          <div class="col-4">
+              <input class="" type="checkbox" name="permission[]" id="" value="{{ $permission->id }}" id="permission">
             <label class="form-check-label" for="permission">
-              {{ $permission->desc}}
+              {{ $permission->name}}
             </label>
           </div>
           @endforeach
@@ -39,3 +37,31 @@
     </div>
   </div>
 @endsection 
+
+@section('script')
+  <script>
+
+    $('#role_id').on('change', function(event){
+      var role_id = $(this).val();
+      $.ajax({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: '{{ route("permission_byRole") }}',
+        type: 'post',
+        data: {
+          'id': role_id
+        },
+        success: function(data){
+          $('input[type=checkbox]').each(function(){
+            var ThisVal = parseInt(this.value);
+            if (data.includes(ThisVal)) 
+              this.checked = true;
+            else
+              this.checked = false;
+          });
+        }
+      });
+    });
+  </script>
+@endsection

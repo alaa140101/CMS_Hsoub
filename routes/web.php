@@ -68,4 +68,6 @@ Route::prefix('admin')->group( function () {
   Route::post('permissions', [AdminRoleController::class, 'store'])->name('permissions');
 });
 
+Route::post('permission/byRole', [AdminRoleController::class, 'getByRole'])->name('permission_byRole');
+
 
