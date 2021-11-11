@@ -70,4 +70,6 @@ Route::prefix('admin')->group( function () {
 
 Route::post('permission/byRole', [AdminRoleController::class, 'getByRole'])->name('permission_byRole');
 
+Route::resouce('pages', AdminPageController::class)->name('page');
+
 
