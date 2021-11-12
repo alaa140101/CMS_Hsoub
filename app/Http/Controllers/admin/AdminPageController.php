@@ -54,9 +54,11 @@ class AdminPageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $page = $this->page->whereSlug($slug)->first();
+
+        return view('admin.pages.show', compact('page'));
     }
 
     /**
@@ -65,9 +67,10 @@ class AdminPageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $page = $this->page->whereSlug($slug)->first();
+        return view('admin.pages.edit', compact('page'));
     }
 
     /**
@@ -77,9 +80,12 @@ class AdminPageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+        // $this->page::find($slug)->update($request->all());
+        $this->page->whereSlug($slug)->first()->update($request->all());
+
+        return back()->with('success', trans('alerts.success'));
     }
 
     /**
@@ -88,8 +94,17 @@ class AdminPageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Page $page)
     {
-        //
+        if($page->slug == null){
+            abort(404);
+        }
+
+
+        $page->delete();
+
+        // Storage::delete("public/".$post->image_path);
+
+        return redirect(auth()->user()->username);
     }
 }

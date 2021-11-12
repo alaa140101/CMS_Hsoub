@@ -25,7 +25,7 @@
             </div>
             <div class="col-lg-12 form-group">
               <label for="body">المحتوى</label>
-              <textarea name="content" class="form-control summernote" id="" cols="30" rows="10"></textarea>
+              <textarea name="content" class="form-control summernote" cols="30" rows="10" id="summernote"></textarea>
             </div>
             <div class="col-lg-12 form-group">
               <button class="btn btn-primary mt-3" type="submit">إنشاء</button>
@@ -35,4 +35,15 @@
       </div>
     </div>
   </div>
+@endsection
+
+@section('script')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+
+<script>
+  $(document).ready(function() {
+    $('#summernote').summernote();
+  });
+</script>
 @endsection

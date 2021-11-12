@@ -16,9 +16,9 @@
                 <i class="fa fa-file"></i>{{__('titles.Pages')}}
             </a>
             <div class="dropdown-menu text-right" aria-labelledby="navbarDropdown">
-                {{-- @foreach($pages as $page)
-                <a class="dropdown-item" href="{{ route('page.show',$page->slug ) }}">{{ $page->title }}</a>
-                @endforeach --}}
+                @foreach($pages as $page)
+                <a class="dropdown-item" href="{{ route('pages.show',$page->slug ) }}">{{ $page->title }}</a>
+                @endforeach
             </div>
         </li>
     </ul>
