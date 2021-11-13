@@ -40,6 +40,10 @@ class AppServiceProvider extends ServiceProvider
          View::composer(['partials.navbar'], PageComposer::class);
 
          Paginator::useBootstrap();
+
+         \Blade::if('admin', function () {
+             return auth()->check() && auth()->user()->isAdmin();
+         });
          
     }
 }

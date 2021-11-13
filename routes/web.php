@@ -54,7 +54,7 @@ Route::post('settings', [ProfileController::class, 'updateProfile'])->name('sett
 //     return view('admin.index');
 // });
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('Admin')->name('dashboard');
 
 // Route::get('/dashboard', ['as'=>'dashboard','uses'=> [DashboardController::class, 'index']])->middleware('Admin');
 
@@ -63,14 +63,18 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 
 // Route::resource('admin/permissions', AdminPermissionController::class);
 
-Route::prefix('admin')->group( function () {
+Route::group(['prefix' => 'admin', 'middeleware' => 'Admin'], function () {
+
   Route::resource('posts', AdminPostController::class);
+
   Route::get('permissions', [AdminPermissionController::class, 'index'])->name('permissions.index');
+
   Route::post('permissions', [AdminRoleController::class, 'store'])->name('permissions');
+
+  Route::post('permission/byRole', [AdminRoleController::class, 'getByRole'])->name('permission_byRole');
 });
 
-Route::post('permission/byRole', [AdminRoleController::class, 'getByRole'])->name('permission_byRole');
 
-Route::resource('pages', AdminPageController::class);
+Route::resource('pages', AdminPageController::class)->middleware('Admin');
 
 
